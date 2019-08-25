@@ -1,0 +1,59 @@
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <title>{% block title %} WorkTI -Vagas para profissionais de TI {% endblock %}</title>
+</head>
+<body>
+  <nav>
+    <div class="nav-wrapper" style="padding-left: 80px; padding-right: 80px; background: #ffffff;">
+      <a href="/">
+        <!--<img class="brand-logo" style="padding-top: 15px" src="{{'static/aqui fica seu logo'}}" width="150">-->
+        <span style="font-weight: bold; color: #000; font-size: 2rem;">WorkTI</span>
+      </a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        {% if current_user.is_authenticated %}
+            <a class="waves-effect waves-light btn red" href="{{ url_for('logout') }}"> Logout </a>
+            <li>
+              <a class="waves-effect waves-light btn" href="{{ url_for('getVagas') }}">Vagas</a>
+            </li>
+            <li>
+              <a class="waves-effect waves-light btn" href="{{ url_for('getVagas') }}">Currículos de candidatos</a>
+            </li>
+        {% else %}
+            <li>
+              <a class="waves-effect waves-light btn" href="{{ url_for('login') }}"> Login </a>
+              <a class="waves-effect waves-light btn" href="{{ url_for('register') }}">Cadastro</a>
+            </li>
+        {% endif %}
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="row">
+      {% with messages = get_flashed_messages() %}
+      {% if messages %}
+      <br>
+        <p class="card-panel teal lighten-2">
+            {% for message in messages %}
+                <span style="list-style: none;">
+                  {{ message }}
+                </span>
+            {% endfor %}
+        </p>
+      {% endif %}
+      {% endwith %}
+      </p>
+    </div>
+  {% block content %}
+  {% endblock %}
+  </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+  {% extends 'base.html' %}
+  {% block title %} {{ super() }} - Index{% endblock %}
+  {% block content %}
+
+  <div class="row">
+    <h2> Registro de usuário </h2>
+    <form method="POST" class="col s12">
+      {{ form.csrf_token }}
+      <div class="input-field col s12">
+        <label for="name">Nome</label>
+        {{form.name(placeholder="Nome para perfil", class="form-control")}}
+      </div>
+      <div class="input-field col s12">
+        <label for="email">Email</label>
+        {{form.email(placeholder="Entre com seu email", class="form-control")}}
+      </div>
+      <div class="input-field col s12">
+        <label for="password">Password</label>
+        {{form.password( placeholder="**********", class="form-control" )}}
+      </div>
+      <p>
+          <label>
+            <input type="checkbox" />
+            <span>Sou candidato</span>
+          </label>
+        </p>
+
+        <p>
+          <label>
+            <input type="checkbox" />
+            <span>Sou empresa</span>
+          </label>
+        </p>
+        <button type="submit" class="waves-effect waves-light #00bcd4 btn cyan"> Registrar </button>
+    </form>
+  </div>
+  {% endblock %}

@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %} {{ super() }} - Index{% endblock %}
+
+{% block content %}
+  <div class="row">
+    <legend> Cadastro de vaga </legend>
+    <form method="POST" class="col s12">
+      {{ form.csrf_token }}
+      <div class="input-field col s12">
+        <label for="titulo">Titulo</label>
+        {{form.titulo(placeholder="Título da vaga", class="form-control")}}
+      </div>
+      <div class="input-field col s12">
+        <label for="descricao">Descrição da vaga</label>
+        {{form.descricao(class="form-control materialize-textarea")}}
+      </div>
+      <div class="input-field col s12">
+        <label for="dataPublicacao">Data da publicção da vaga</label>
+        {{form.dataPublicacao(class="form-control" )}}
+      </div>
+      <button type="submit" class="waves-effect waves-light #00bcd4 btn cyan"> Cadastrar vaga </button>
+    </form>
+  </div>
+{% endblock %}

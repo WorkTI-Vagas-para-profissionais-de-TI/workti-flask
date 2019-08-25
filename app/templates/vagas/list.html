@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block title %} {{ super() }} - Index{% endblock %}
+{% block content %}
+
+<div class="row">
+  <a href="{{ url_for('insertVaga') }}" class="waves-effect waves-light btn" style="background: black; color: #fff;"> Criar nova vaga</a>
+  <br><br>
+  {% for vaga in vaga %}
+  <center>
+    <div class="col s4 m4 ">
+      <div class="card">
+        <div class="card-content  #eeeeee grey lighten-3 black-text">
+          <span class="card-title"> <b>{{ vaga.titulo }}</b> </span>
+          <p>{{ vaga.descricao }}</p>
+        </div>
+        <div class="card-footer" style="margin-top: -15px; margin-bottom: -15px;">
+          <ul class="#424242 grey darken-3 white-text">
+            <li class="#0277bd light-blue darken-3" style="padding: 5px;">{{ vaga.dataPublicacao }}</li>
+            <li class="#01579b light-blue darken-4 white-text" style="padding: 5px;"> Postada por: <b>{{ vaga.usuario.name }}</b></li>
+          </ul>
+        </div>
+        <div class="card-action">
+          {% if vaga.id_usuario == current_user.id %}
+          <p>
+            <a href="/vagas/edit/{{vaga.id}}" class="waves-effect waves-light btn green">Editar</a>
+            <a href="/vagas/delete/id/{{vaga.id}}" class="waves-effect waves-light btn red">Excluir</a>
+          </p>
+          {% endif %}
+        </div>
+        <center>
+          <div class="card-action">
+            <a href="" class="waves-effect waves-light #00bcd4 btn cyan"> Candidatar-se</a>
+          </div>
+        </center>
+      </div>
+    </div>
+  </center>
+  {% endfor %}
+</div>
+
+{% endblock %}
+
+
+

@@ -1,0 +1,92 @@
+
+{% include 'base.html' %}
+{% block content%}
+<div class="row" style="margin: 30px auto;">
+    <div class="col-sm-3">
+        <div class="alert alert-info">
+            <h4><strong>Dica 01</strong></h4>
+            Preencha só o que se encaixa com seu perfil!
+        </div>
+        <div class="alert alert-info">
+            <h4><strong>Dica 02</strong></h4>
+            Os campos azuis são obrigatórios.
+        </div>
+        <div class="alert alert-info">
+            <h4><strong>Dica 03</strong></h4>
+            Digite suas informações com calma, aliás, você está
+            se candidatando a um emprego.
+        </div>
+        <div class="alert alert-info">
+            <h4><strong>Dica 04</strong></h4>
+            Divirta-se no sistema.
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <fieldset>
+            <legend>
+                Monte seu perfil profissional
+            </legend>
+            <form action="" method="POST">
+                {{ form.csrf_token }}
+                <!-- ENDERECO -->
+                <div style="margin-bottom: 5px;">
+                    <h3> <strong>Endereço</strong> </h3>
+                    <p>{{form.numero(
+                            class="form-control", placeholder="Nº da Casa")}}</p>
+                    <p>{{form.ap(
+                            class="form-control", placeholder="Nº do AP")}}</p>
+                    <p>{{form.bloco(
+                            class="form-control", placeholder="Bloco")}}</p>
+                    <p class="alert alert-info">{{form.rua(
+                            class="form-control", placeholder="Rua")}}</p>
+                    <p class="alert alert-info">{{form.quadra(
+                            class="form-control", placeholder="Quadra")}}</p>
+                    <p class="alert alert-info col-sm-12">
+                        <span class="col-sm-4">
+                            {{form.bairro(class="form-control", placeholder="Bairro")}}
+                        </span>
+                        <span class="col-sm-4">
+                            {{form.cidade(class="form-control", placeholder="Cidade")}}
+                        </span>
+                        <span class="col-sm-4">
+                            {{form.estado(class="form-control", placeholder="UF")}}
+                        </span>
+                    </p>
+                </div>
+
+
+                <!-- CERTIFICADOS -->
+                <div style="margin-bottom: 5px;">
+                    <h3> <strong> Certificados</strong> </h3>
+                    <p class="alert alert-danger">
+                        No momento o sistema só permite um certificado.
+                    </p>
+                    <p>{{form.titulo(
+                            class="form-control", placeholder="Título do Certificado")}}</p>
+                    <p>{{form.data_expedicao(
+                            class="form-control", placeholder="DD/MM/AAAA  -  Data do certificado")}}</p>
+                    <p>{{form.descricao_certificado(
+                            class="form-control", placeholder="Descrição do aprendizado")}}
+                    </p>
+
+
+                <!-- CURSOS -->
+                <div style="margin-bottom: 5px;">
+                    <h3> <strong> Cursos </strong> </h3>
+                    <p class="alert alert-danger">
+                        No momento o sistema só permite um curso.
+                    </p>
+                    <p>{{form.nome(
+                            class="form-control", placeholder="Nome do Curso")}}</p>
+                    <p>{{form.descricao(
+                            class="form-control", placeholder="Descrição do curso")}}</p>
+                    <p>{{form.instituicao(
+                            class="form-control", placeholder="Instituição")}}
+                    </p>
+                <button type="submit" class="btn btn-success">Cadastrar no meu perfil</button>
+            </form>
+        </fieldset>
+    </div>
+    <div class="col-sm-3"></div>
+</div>
+{% endblock %}

@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+  {% block title %} {{ super() }} - Index{% endblock %}
+  {% block content %}
+  <main>
+    <center>
+      <div class="container">
+        <br><br>
+        <div class="z-depth-1 grey lighten-4 row" style="display: inline-block; padding: 32px 48px 0px 48px; border: 1px solid #EEE;">
+          <form class="col s12" method="post">
+            {{ form.csrf_token }}
+            <div class='row'>
+              <div class='col s12'>
+              </div>
+            </div>
+
+            <div class='row'>
+              <div class='input-field col s12'>
+                <label for='password'>Entre com seu email</label>
+                {{form.email(placeholder="Entre com seu email", class="form-control")}}
+              </div>
+            </div>
+
+            <div class='row'>
+              <div class='input-field col s12'>
+                <label for='email'>Entre com sua senha</label>
+                {{form.password( placeholder="**********", class="form-control" )}}
+              </div>
+            </div>
+
+            <label style='float: right;'>
+              <a class="waves-effect waves-light modal-trigger" href="#modal1">Esqueci a senha</a>
+            </label>
+            <!-- Modal Structure -->
+            <div id="modal1" class="modal bottom-sheet">
+              <div class="modal-content">
+                <h4>Modal Header</h4>
+                <p>A bunch of text</p>
+              </div>
+              <div class="modal-footer">
+                <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+              </div>
+            </div>
+
+            <br />
+            <center>
+              <div class='row'>
+                <button  name='btn_login' class='#212121 grey darken-4 col s12 btn btn-large waves-effect'>Login</button>
+              </div>
+            </center>
+          </form>
+        </div>
+      </div>
+    </center>
+
+    <div class="section"></div>
+    <div class="section"></div>
+  </main>
+  {% endblock %}
