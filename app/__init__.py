@@ -4,11 +4,11 @@ from flask_migrate import Migrate, MigrateCommand
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 
-
 # app more config
 app = Flask(__name__)
 app.config.from_object('config')
-
+app.secret_key = 'some secret key' # tive que passar isso aqui pra poder funcioanar
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db' # mesma coisa aqui tbm (ele gera o db.sqlite)
 
 # databse connection
 db = SQLAlchemy(app)
